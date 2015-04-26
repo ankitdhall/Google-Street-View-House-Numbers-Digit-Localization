@@ -8,3 +8,5 @@ Each line contains an image number followed by the number of bounding boxes in t
 The above format is for both groundtruth as well as CPU generated bounding boxes.
 
 intersectionOverUnion.txt contains the ratios of the intersection of CPU and groundtruth boxes to that of their union for each digit.
+
+(Tested on first 100 images of dataset)
