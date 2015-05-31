@@ -12,19 +12,6 @@ using namespace std;
 
 ofstream out;
 
-/** TODO
-*train the classifiers with more number of samples
-*display only top 4 if more than 4
-*run classifier for images at different aspect ratios
-*confidence score
-
-*if no bbox then use low level features evaluator to get bbox
-*check max and min size of detection
-*sort bbox according to mid point or tl().x??
-*tweak overlapping ratio of 0.5 !
-
-*/
-
 struct sort_condition
 {
     bool operator()(const Rect &i,const Rect &j)
