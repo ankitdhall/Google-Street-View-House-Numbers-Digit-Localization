@@ -211,20 +211,6 @@ public:
             }
 
             imNo++;
-
-            /*int confid_max=-1;
-            for(int i=0; i<confidence.size(); i++)
-            {
-                if(confidence[i] > confid_max)
-                    confid_max=confidence[i];
-            }
-            for(int i=0; i<confidence.size(); i++)
-            {
-                confidence[i]=confidence[i]/confid_max;
-                cout<<confidence[i]<<endl;
-            }*/
-
-
             write();
 
             imshow("result", result );
