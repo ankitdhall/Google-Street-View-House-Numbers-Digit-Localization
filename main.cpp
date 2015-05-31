@@ -51,7 +51,9 @@ public:
     int curr_x, curr_y, curr_width, curr_height, imNo;
     Rect ans;
 
-    detect(String add="D:/ToDo/research_santa_cruz/train/cascade")
+    vector <float> confidence;
+
+    detect(String add="C:/Users/student/Desktop/adc/svhn/Google-Street-View-House-Numbers/cascades/cascade")
     {
         ratios[0] = 1;
         ratios[1] = 2;
@@ -141,10 +143,14 @@ public:
                 //no more rectangles can be added to cluster, save temp in combined.
                 combined.push_back(temp);
                 temp = all_digits[i];
+                cout<<"Rectangles clustered:"<<cc<<"\n";
+                confidence.push_back(cc);
                 cc=1;
             }
         }
         combined.push_back(temp);//pushing the last cluster
+        cout<<"Rectangles clustered:"<<cc<<"\n";
+        confidence.push_back(cc);
     }
 
     void eval( Mat image, int enlarge=1)
@@ -205,7 +211,21 @@ public:
             }
 
             imNo++;
-            //write();
+
+            /*int confid_max=-1;
+            for(int i=0; i<confidence.size(); i++)
+            {
+                if(confidence[i] > confid_max)
+                    confid_max=confidence[i];
+            }
+            for(int i=0; i<confidence.size(); i++)
+            {
+                confidence[i]=confidence[i]/confid_max;
+                cout<<confidence[i]<<endl;
+            }*/
+
+
+            write();
 
             imshow("result", result );
             imshow("combined", result2 );
@@ -219,15 +239,17 @@ public:
             eval(temp_copy,2*enlarge);
         }
 
+
         all_digits.clear();
         filtered.clear();
         combined.clear();
+        confidence.clear();
     }
     void write()
     {
         out<<imNo<<" "<<combined.size();
         for(int i =0; i<combined.size(); i++)
-            out<<" "<<combined[i].x<<" "<<combined[i].y<<" "<<combined[i].width<<" "<<combined[i].height;
+            out<<" "<<combined[i].x<<" "<<combined[i].y<<" "<<combined[i].width<<" "<<combined[i].height<<" "<<confidence[i];
         out<<"\n";
 
     }
@@ -246,7 +268,7 @@ int main()
     Mat image, image_truth, frame;
     detect detector;
 
-    string address = "D:/ToDo/research_santa_cruz/train/";
+    string address = "C:/Users/student/Desktop/adc/svhn/train/";
     string filename, cas, converted;
     for(int i =1; i<=100; i++)
     {
@@ -259,12 +281,12 @@ int main()
         image = imread(filename,1);
         detector.eval(image);
 
-        int c = waitKey(0);
+        /*int c = waitKey(0);
         if( (char)c == 27 )
         {
             destroyAllWindows();
             break;
-        }
+        }*/
 
     }
     return 0;
