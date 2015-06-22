@@ -8,9 +8,9 @@
 Link to dataset: http://ufldl.stanford.edu/housenumbers/
 
 #Accuracy:
-**Precision:0.7045**
+**Recall:0.7045**
 
-**Recall:0.5616**
+**Precision:0.5616**
 
 **F-score:0.625**
 
@@ -48,9 +48,9 @@ Number of digits detected by CPU algorithm: 276
 
 Number of bounding boxes with intersection over union ratio > 0.50: 155
 
-Precision:0.7045
+Recall:0.7045
 
-Recall:0.5616
+Precision:0.5616
 
 F-score:0.625
 
