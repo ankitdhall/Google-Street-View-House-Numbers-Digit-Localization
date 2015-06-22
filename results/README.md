@@ -18,3 +18,5 @@ The above format is for both groundtruth as well as CPU generated bounding boxes
 **confidence_ratio**: this has confidence in terms of a ratio = clustersize of this digit/max clustersize in the image. Confidence is a float value belonging to (0,1]
 
 (Tested on first 100 images of dataset)
+
+Accuracy calculated using CPUresponse.txt
