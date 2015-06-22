@@ -54,7 +54,7 @@ public:
 
         base = add;
         imNo=0;
-        out.open("location_5000.txt", ios::out);
+        out.open("newCPU.txt", ios::out);
         load();
     }
 
@@ -220,9 +220,34 @@ public:
     }
     void write()
     {
-        out<<imNo<<" "<<combined.size();
+        int mini = 4;
+        Rect temporary;
+        int tempc;
+        for(int i=0; i<combined.size(); i++)
+        {
+
+            for(int j=0; j<combined.size(); j++)
+            {
+                if(confidence[j] < confidence[i])
+                {
+                    temporary = combined[i];
+                    combined[i] = combined[j];
+                    combined[j] = temporary;
+
+                    tempc = confidence[i];
+                    confidence[i] = confidence[j];
+                    confidence[j] = tempc;
+                }
+            }
+        }
+        int combinedSize=combined.size();
+        out<<imNo<<" "<<std::min(combinedSize, mini);
         for(int i =0; i<combined.size(); i++)
-            out<<" "<<combined[i].x<<" "<<combined[i].y<<" "<<combined[i].width<<" "<<combined[i].height<<" "<<confidence[i];
+        {
+            out<<" "<<combined[i].x<<" "<<combined[i].y<<" "<<combined[i].width<<" "<<combined[i].height;//<<" "<<confidence[i];
+            if(i >= mini-1)
+                break;
+        }
         out<<"\n";
 
     }
