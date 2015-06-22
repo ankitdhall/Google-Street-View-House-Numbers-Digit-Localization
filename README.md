@@ -8,11 +8,11 @@
 Link to dataset: http://ufldl.stanford.edu/housenumbers/
 
 #Accuracy:
-**Recall:0.7045**
+**Recall:0.6955**
 
-**Precision:0.5616**
+**Precision:0.6024**
 
-**F-score:0.625**
+**F-score:0.6456**
 
 
 #Format:
@@ -44,15 +44,15 @@ Total number of images: 100
 
 Total number of individual digits: 220
 
-Number of digits detected by CPU algorithm: 276
+Number of digits detected by CPU algorithm: 254
 
-Number of bounding boxes with intersection over union ratio > 0.50: 155
+Number of bounding boxes with intersection over union ratio > 0.50: 153
 
-Recall:0.7045
+Recall:0.6955
 
-Precision:0.5616
+Precision:0.6024
 
-F-score:0.625
+F-score:0.6456
 
 The accuracy was measured using the intersection area over union area of ground truth and CPU generated results. If this ratio is greater than 0.5 we consider that the digit has been localized.
 
