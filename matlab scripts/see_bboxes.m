@@ -1,3 +1,6 @@
+%Authors:
+%Ankit Dhall and Yash Chandak
+
 %load digitStruct.mat
 fid = fopen('ground_full.txt','w');
 for i = 1:5000%length(digitStruct)
