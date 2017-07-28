@@ -1,23 +1,35 @@
-# Google-Street-View-House-Numbers:
-**Aspiring Researchers' Challenge 2015**
+# Google SVHN Digit Localization
+Localize the the digits in images from the Google SVHN dataset
 
-**Objective: Localize the digits in images**
-
-![dataset](http://d212dsb2sdisoj.cloudfront.net/wp-content/uploads/2014/04/logo48-257x171.jpg "SVHN dataset ground truth samples")
+![dataset](http://ufldl.stanford.edu/housenumbers/examples_new.png "SVHN dataset ground truth samples")
 
 Link to dataset: http://ufldl.stanford.edu/housenumbers/
 
-#Accuracy:
-**Recall:0.6955**
+### Citing `Google-Street-View-House-Numbers-Digit-Localization`
+Please cite our work if `Google-Street-View-House-Numbers-Digit-Localization` and our approach helps your research.  
 
-**Precision:0.6024**
+```
+@Misc{SVHNLocalization,
+  author = {{Dhall*}, A. and {Chandak*} Y.}
+  title = "{Google-Street-View-House-Numbers-Digit-Localization}",
+  howpublished = {\url{https://github.com/ankitdhall/Google-Street-View-House-Numbers-Digit-Localization}},
+  year = {2015}
+}
+```  
 
-**F-score:0.6456**
+1. [Accuracy](#accuracy)
+2. [Format](#format)
+3. [Files and Usage](#the-localization)  
+4. [Detailed Results](#detailed-results)  
 
+## Accuracy
+Recall:0.6955  
+Precision:0.6024  
+F-score:0.6456  
 
-#Format:
+## Format:
 
-**img_num num_of_boxes x1 y1 w1 h1 x2 y2 w2 h2 . . . xn yn wn hn**
+**img_num num_of_boxes x1 y1 w1 h1 x2 y2 w2 h2 . . . xn yn wn hn**  
 
 Each line contains an image number followed by the number of bounding boxes in the image and 4-tuple of top x co-ordinate, y co-ordinate, width and height
 
@@ -25,7 +37,7 @@ The above format is for both groundtruth as well as CPU generated bounding boxes
 
 intersectionOverUnion.txt contains the ratios of the intersection of CPU and groundtruth boxes to that of their union for each digit.
 
-#The Localization:
+## The Localization:
 We prepared the dataset for training by segregating individual digits into 10 classes. To generate negative data for training we cropped random samples from images where digits were absent. The training data was prepared by padding 10% of the height and resizing the digits to 20x30 pixels.
 
 Data was trained by means of Linear Binary Pattern classifier on OpenCV in C++. The classifier ran for 15 levels of training on 2500 instances of each of the ten digits with 3000 negative examples in the data set.
@@ -38,7 +50,7 @@ Still there were very many bounding boxes around the digits. To reduce the numbe
 
 We measured the results on the first 100 images of the SVHN dataset.
 
-**Detailed results:**
+## Detailed results
 
 Total number of images: 100
 
