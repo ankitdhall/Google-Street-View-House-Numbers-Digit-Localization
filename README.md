@@ -1,9 +1,10 @@
 # Google SVHN Digit Localization
-Localize the the digits in images from the Google SVHN dataset
 
-![dataset](http://ufldl.stanford.edu/housenumbers/examples_new.png "SVHN dataset ground truth samples")
+![ground truth from dataset](http://ufldl.stanford.edu/housenumbers/examples_new.png "SVHN dataset ground truth samples")
 
+Localizing the the digits in images from the Google SVHN dataset.
 Link to dataset: http://ufldl.stanford.edu/housenumbers/
+
 
 ### Citing `Google-Street-View-House-Numbers-Digit-Localization`
 Please cite our work if `Google-Street-View-House-Numbers-Digit-Localization` and our approach helps your research.  
