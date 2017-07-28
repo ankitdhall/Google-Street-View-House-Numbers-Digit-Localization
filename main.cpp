@@ -1,3 +1,8 @@
+/*
+Authors:
+Ankit Dhall and Yash Chandak
+*/
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "opencv2/objdetect/objdetect.hpp"
