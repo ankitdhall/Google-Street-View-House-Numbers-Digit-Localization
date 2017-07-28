@@ -22,13 +22,14 @@ Please cite our work if `Google-Street-View-House-Numbers-Digit-Localization` an
 2. [Format](#format)
 3. [Files and Usage](#the-localization)  
 4. [Detailed Results](#detailed-results)  
+5. [Result Format](#result-format)  
 
 ## Accuracy
 Recall:0.6955  
 Precision:0.6024  
 F-score:0.6456  
 
-## Format:
+## Format
 
 **img_num num_of_boxes x1 y1 w1 h1 x2 y2 w2 h2 . . . xn yn wn hn**  
 
@@ -38,7 +39,7 @@ The above format is for both groundtruth as well as CPU generated bounding boxes
 
 intersectionOverUnion.txt contains the ratios of the intersection of CPU and groundtruth boxes to that of their union for each digit.
 
-## The Localization:
+## The Localization
 We prepared the dataset for training by segregating individual digits into 10 classes. To generate negative data for training we cropped random samples from images where digits were absent. The training data was prepared by padding 10% of the height and resizing the digits to 20x30 pixels.
 
 Data was trained by means of Linear Binary Pattern classifier on OpenCV in C++. The classifier ran for 15 levels of training on 2500 instances of each of the ten digits with 3000 negative examples in the data set.
@@ -53,19 +54,39 @@ We measured the results on the first 100 images of the SVHN dataset.
 
 ## Detailed results
 
-Total number of images: 100
-
-Total number of individual digits: 220
-
-Number of digits detected by CPU algorithm: 254
-
-Number of bounding boxes with intersection over union ratio > 0.50: 153
-
-Recall:0.6955
-
-Precision:0.6024
-
-F-score:0.6456
+Total number of images: 100  
+Total number of individual digits: 220  
+Number of digits detected by CPU algorithm: 254  
+Number of bounding boxes with intersection over union ratio > 0.50: 153  
+Recall:0.6955  
+Precision:0.6024  
+F-score:0.6456  
 
 The accuracy was measured using the intersection area over union area of ground truth and CPU generated results. If this ratio is greater than 0.5 we consider that the digit has been localized.
+
+## Result Format
+The description of the format in which results are stored is as follows:
+Please see the `/results` folder for more information and specific details.  
+
+### Format (CPU boxes)  
+
+img_num    num_of_boxes    x1 y1 w1 h1 x2 y2 w2 h2 . . . xn yn wn hn  
+
+### Format (CPU boxes with confidence)
+
+img_num    num_of_boxes    x1 y1 w1 h1 confidenceScore1 x2 y2 w2 h2 confidenceScore2 . . . xn yn wn hn confidenceScoren  
+
+Each line contains an image number followed by the number of bounding boxes in the image and 4-tuple of top x co-ordinate, y co-ordinate, width and height
+
+The above format is for both groundtruth as well as CPU generated bounding boxes.
+
+#### intersectionOverUnion.txt
+contains the ratios of the intersection of CPU and groundtruth boxes to that of their union for each digit.
+
+#### confidence_clustersize
+the confidence here is the number of boxes that were clustered together to get the box on the current digit in question. The confidence is an integer.
+
+#### confidence_ratio
+this has confidence in terms of a ratio = clustersize of this digit/max clustersize in the image. Confidence is a float value belonging to (0,1]
+
 
